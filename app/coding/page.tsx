@@ -42,13 +42,14 @@ function ProjectCard({
   link: string;
 }) {
   return (
-    <div style={projectCardStyles}>
+    <div style={projectCardStyles} className="project-card">
       <img src={image} alt={title} style={imageStyles} />
       <h3 style={projectCardTitleStyles}>{title}</h3>
       <p style={projectCardDescriptionStyles}>{description}</p>
       <a
         href={link}
         style={projectCardLinkStyles}
+        className="project-card-link"
         target="_blank"
         rel="noopener noreferrer"
       >
@@ -80,12 +81,6 @@ const sectionStyles: React.CSSProperties = {
   marginBottom: "60px",
 };
 
-const sectionTitleStyles: React.CSSProperties = {
-  fontSize: "2rem",
-  fontWeight: "bold",
-  marginBottom: "20px",
-};
-
 const gridStyles: React.CSSProperties = {
   display: "grid",
   gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))",
@@ -102,7 +97,7 @@ const projectCardStyles: React.CSSProperties = {
 };
 
 const imageStyles: React.CSSProperties = {
-  maxWidth: "80%", // Adjusted to make the image smaller
+  maxWidth: "80%",
   height: "auto",
   objectFit: "cover",
   borderRadius: "8px",
@@ -132,11 +127,5 @@ const projectCardLinkStyles: React.CSSProperties = {
   border: "2px solid #8BAAAD",
   borderRadius: "5px",
   transition: "all 0.3s ease",
-};
-
-projectCardLinkStyles[":hover"] = {
-  backgroundColor: "#8BAAAD",
-  color: "#ffffff",
-  boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
 };
 

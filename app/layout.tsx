@@ -145,10 +145,10 @@ const mainStyles: React.CSSProperties = {
   textAlign: "center",
 };
 
-const footerStyles = {
+const footerStyles: React.CSSProperties = {
   backgroundColor: "#004d4d",
   color: "#ffffff",
-  textAlign: "center",
+  textAlign: "center", // No need to cast here
   padding: "20px 0",
   borderTop: "5px solid #8BAAAD",
 };

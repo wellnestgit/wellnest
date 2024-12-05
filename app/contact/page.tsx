@@ -12,45 +12,58 @@ const ContactPage: React.FC = () => {
           collaborate, or just say hello, feel free to reach out.
         </p>
         <div style={contactInfoStyles}>
-          <div style={contactItemStyles}>
-            {/* Replace with phone icon */}
-            <img src="/phone.png" alt="Phone" style={iconStyles} />
-            <span style={contactTextStyles}>+123-456-7890</span>
-          </div>
-          <div style={contactItemStyles}>
-            {/* Replace with email icon */}
-            <img src="/email.png" alt="Email" style={iconStyles} />
-            <span style={contactTextStyles}>cbxmcmurtry@gmail.com</span>
-          </div>
-          <div style={contactItemStyles}>
-            {/* Replace with LinkedIn icon */}
-            <img src="/linkedin.png" alt="LinkedIn" style={iconStyles} />
-            <a
-              href="www.linkedin.com/in/chloe-m542"
-              style={contactLinkStyles}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              LinkedIn Profile
-            </a>
-          </div>
-          <div style={contactItemStyles}>
-            {/* Replace with GitHub icon */}
-            <img src="/github.png" alt="GitHub" style={iconStyles} />
-            <a
-              href="https://github.com/yourprofile"
-              style={contactLinkStyles}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              GitHub Profile
-            </a>
-          </div>
+          <ContactItem
+            icon="/phone.png"
+            alt="Phone"
+            content="+123-456-7890"
+          />
+          <ContactItem
+            icon="/email.png"
+            alt="Email"
+            content="cbxmcmurtry@gmail.com"
+          />
+          <ContactItem
+            icon="/linkedin.png"
+            alt="LinkedIn"
+            link="https://www.linkedin.com/in/chloe-m542"
+            linkText="LinkedIn Profile"
+          />
+          <ContactItem
+            icon="/github.png"
+            alt="GitHub"
+            link="https://github.com/yourprofile"
+            linkText="GitHub Profile"
+          />
         </div>
       </div>
     </main>
   );
 };
+
+// Reusable ContactItem Component
+const ContactItem: React.FC<{
+  icon: string;
+  alt: string;
+  content?: string;
+  link?: string;
+  linkText?: string;
+}> = ({ icon, alt, content, link, linkText }) => (
+  <div style={contactItemStyles}>
+    <img src={icon} alt={alt} style={iconStyles} />
+    {link ? (
+      <a
+        href={link}
+        style={contactLinkStyles}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        {linkText}
+      </a>
+    ) : (
+      <span style={contactTextStyles}>{content}</span>
+    )}
+  </div>
+);
 
 // Inline Styles
 const mainStyles: React.CSSProperties = {
@@ -78,9 +91,9 @@ const contentStyles: React.CSSProperties = {
   maxWidth: "800px",
   margin: "0 auto",
   padding: "20px",
-  backgroundColor: "rgba(255, 255, 255, 0.8)", // Optional subtle background
+  backgroundColor: "rgba(255, 255, 255, 0.8)",
   borderRadius: "16px",
-  boxShadow: "0 4px 10px rgba(0, 0, 0, 0.1)", // Subtle shadow
+  boxShadow: "0 4px 10px rgba(0, 0, 0, 0.1)",
 };
 
 const textStyles: React.CSSProperties = {
@@ -119,10 +132,6 @@ const contactLinkStyles: React.CSSProperties = {
   color: "#8BAAAD",
   textDecoration: "none",
   transition: "color 0.3s ease",
-};
-
-contactLinkStyles[":hover"] = {
-  color: "#004d4d",
 };
 
 export default ContactPage;
